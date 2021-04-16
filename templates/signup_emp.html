@@ -1,0 +1,168 @@
+{% extends 'base.html' %}
+{% block title %} 
+{{ super() }}
+- signup_emp
+{% endblock %}
+
+{% block content %}
+<style>
+
+.container{
+    margin-top: 1cm;
+    padding:40px;
+    height:60%;
+    width: 95%;
+    background-color: #a4a1a3e8;
+    border-radius:40px 0px;
+}
+input[type=text],input[type=password],input[type=email],input[type=file]{
+    width:70%;
+    min-width: 135px;
+}
+
+input[type=file]{
+    padding:4px;
+}
+.col{
+    width:50%;
+    display: flex;
+    justify-content: space-between;
+}
+.row{
+    margin-top: 5px;
+}
+label{
+    color:rgb(92, 119, 170);
+    font-weight: bold;
+    margin-bottom: 0;
+}
+
+.options{
+    display: flex;
+    justify-content: space-around;
+}
+
+.suboptions{
+    justify-content:center;
+}
+@media screen and (max-width:750px) {
+    .row{
+        display: block;
+        width:100%;
+    }
+    .container {
+        width:95%;
+        height: 100%;
+        
+    }
+    .col{
+        display: block;
+        width:100%;
+        margin-bottom:5px;
+    }
+    input[type=text],input[type=password],input[type=email]{
+        width:100%;
+    }
+}
+
+@media screen and (min-width:750px){
+    .container{
+        position:absolute;
+        left:50%;
+        top:50%;
+        transform:translate(-50%,-50%);
+    }
+}
+</style>
+
+<div class="wrapper">
+    <div class="container">
+        <form method="POST" action="#">
+            <div class="row">
+                <div class="col">
+                    <label for="full-name">Full Name</label>
+                  <input type="text" class="form-control" id="full-name" name="name" placeholder="Full name">
+                </div>
+                <div class="col">
+                    <label for="email">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" placeholder="Your Email">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="Phone-No">Phone No</label>
+                  <input type="text" class="form-control" id="Phone No" name="phone" placeholder="Phone No">
+                </div>
+                <div class="col">
+                    <label for="City">City</label>
+                  <input type="text" class="form-control" id="City" name="city" placeholder="current City">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="Address">Address</label>
+                  <input type="text" class="form-control" id="Address" name="address" placeholder="current address">
+                </div>
+                <div class="col">
+                    <label for="skills">Spefiality/skills</label>
+                  <input type="text" class="form-control" id="skills" name="skill" placeholder="Your skills">
+                </div>
+            </div>
+            
+            <div class="row">
+                <div class="col">
+                    <label for="Username">Username</label>
+                  <input type="text" class="form-control" id="Username" name="username" placeholder="Username">
+                </div>
+                <div class="col">
+                    <label for="charge">initial charge</label>
+                  <input type="text" class="form-control" id="charge" name="charge" placeholder="Your charge">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <label for="full-name">Password</label>
+                  <input type="password" class="form-control" id="full-name" name="password" placeholder="First name">
+                </div>
+                <div class="col">
+                    <label for="confirm">confirm password</label>
+                  <input type="password" class="form-control" id="confirm" placeholder="confirm password">
+                </div>
+            </div>
+
+
+            <div class="row options">
+                <div class="col suboptions">
+                    <div class="form-group">
+                        <label for="Gender">Gender</label>
+                        <select class="form-control" name="gender" id="Gender">
+                          <option>Male</option>
+                          <option>Female</option>
+                          <option>Transgender</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col suboptions">
+                    <div class="form-group">
+                        <label for="Experience">Experience</label>
+                        <select class="form-control" name="exp" id="Experience">
+                        <option>1 year</option>
+                        <option>2 years</option>
+                        <option>3 years</option>
+                        <option>4 years</option>
+                        <option>5 years</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+                            
+            <button type="submit" class="btn btn-danger">Submit</button>
+          </form>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+{% endblock %}

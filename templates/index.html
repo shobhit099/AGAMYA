@@ -17,6 +17,10 @@
         font-family: "Lucida Console", "Courier New", monospace;
         text-align: center;
     }
+    .purpose a{
+    text-decoration: none;
+    color:black
+}
     .about h1{
         font-family: 'Brush Script MT', cursive;
         text-align: center;
@@ -143,8 +147,8 @@
 
 <section class="about" id='about'>
     <div class="purpose">
-        <button type="button" class="btn btn-primary btn-lg">FIND TALENT</button>
-        <button type="button" class="btn btn-secondary btn-lg">FIND WORK</button>
+        <button type="button" class="btn btn-primary btn-lg"><a href="#">FIND TALENT</a></button>
+        <button type="button" class="btn btn-secondary btn-lg"><a href="{{ url_for('login_emp')}}">FIND WORK</a></button>
    </div>
    <h1>We offer Worldwide exciting Career Opportunities</br></h1>
     <h2> Grow by Lifting others.</h2>
