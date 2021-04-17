@@ -5,6 +5,7 @@
 {% endblock %}
 
 {% block content %}
+
 <head>
 <!-- <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"> -->
 </head>
@@ -15,11 +16,6 @@
         <li data-target="#my-carousel" data-slide-to="1"></li>
         <li data-target="#my-carousel" data-slide-to="2"></li>
     </ol>
-
-    <div class="purpose">
-        <div class="box"><a href="#talent">FIND TALENT</a></div>
-        <div class="box"><a href="{{ url_for('login_emp')}}">FIND WORK</a></div>
-   </div>
 
     <div class="caption"></div>
     <div class="carousel-inner">
@@ -59,8 +55,12 @@
         <button type="button" class="btn btn-primary btn-lg"><a href="#">FIND TALENT</a></button>
         <button type="button" class="btn btn-secondary btn-lg"><a href="{{ url_for('login_emp')}}">FIND WORK</a></button>
    </div> -->
+   <div class="purpose">
+        <div class="box"><a href="#talent">FIND TALENT</a></div>
+        <div class="box"><a href="{{ url_for('login_emp')}}">FIND WORK</a></div>
+    </div>
    <h1>We offer Worldwide exciting Career Opportunities</br></h1>
-    <h2> Grow by Lifting others.</h2>
+    <!-- <h2> .</h2> -->
     </h1>
 <h3>Recently ask Question</h3>
 <div class="pack">
@@ -130,6 +130,11 @@
         </div>
     </footer>
 </section>
+
+{% endblock %}
+<!-- ---------------------This is Scripts block--------------------- -->
+{% block scripts %}
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
@@ -203,6 +208,6 @@ async function carousel(sentence, eleRef) {
 function updateFontColor(eleRef, color) {
   $(eleRef).css('color', color);
 }
-carousel("Ready to be the part of Ready2Hire",".caption");
+carousel("We Grow by Lifting others",".caption");
 </script>
 {% endblock %}

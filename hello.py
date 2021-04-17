@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 import os
 
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__ , static_folder = 'static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'data.sqlite')
@@ -27,6 +26,14 @@ class emp(db.Model):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/contact')
+def contact():
+    return render_template('contact_us.html')
+
+@app.route('/about')
+def about():
+    return render_template('about.html')
 
 @app.route('/signup_emp', methods=["POST","GET"])
 def signup_emp():
