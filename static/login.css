@@ -8,7 +8,7 @@
   font-family: 'Poppins', sans-serif;
 }
 section{
-  display: block;
+  display: flex;
   align-items: center;
   justify-content: center;
   min-height: 100vh;
@@ -19,7 +19,7 @@ form{
 }
 
 .wrapper{
-    margin-left: 8cm;
+    /* margin-left: 8cm; */
   width: 90vw;
   max-width: 400px;
   background: #fff;
@@ -91,11 +91,11 @@ input[type=submit]:hover {
     background-color: #4CAF50;
     color: white;
 }
-@media screen and (max-width:400px){
+/* @media screen and (max-width:400px){
     form{
         width:90%;
     }
-}
+} */
 a{
   text-decoration:none;
   position:relative;
