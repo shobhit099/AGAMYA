@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect, url_for,session
 from flask_sqlalchemy import SQLAlchemy
 import os
 
@@ -66,5 +66,8 @@ def login_emp():
                 return 'success'
     return render_template('login_emp.html')
 
+@app.route('/profile_emp')
+def profile_emp():
+    return render_template('profile_emp.html')
 if __name__ == '__main__':
     app.run(debug=True)
