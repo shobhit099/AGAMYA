@@ -64,6 +64,14 @@ def signup_emp():
         return redirect(url_for('login_emp'))
     return render_template('signup_emp.html')
 
+@app.route('/signup_cmp')
+def signup_cmp():
+    return render_template('signup_cmp.html')
+
+
+
+
+
 @app.route('/login_emp',methods=["POST","GET"])
 def login_emp():
     if request.method == 'POST':
