@@ -55,7 +55,7 @@
                     <div class="dp"></div>
                 </div>
                 <div class="basic-details">
-                    Amar Sarkar
+                    {{emp.name}}
                 </div>
 
                 <div class="posts">
@@ -64,10 +64,10 @@
                             <ul>
                                 <li><div class="box">
                                     <div class="item">
-                                        profession
+                                    Profession
                                     </div>
                                     <div class="item-detail">
-                                        Businessman
+                                        {{emp.skill}}
                                     </div>
                                     </div>
                                 </li>
@@ -76,7 +76,7 @@
                                         Gender
                                     </div>
                                     <div class="item-detail">
-                                        Male
+                                        {{emp.gender}}
                                     </div>
                                     </div>
                                 </li>
@@ -85,7 +85,7 @@
                                         Address
                                     </div>
                                     <div class="item-detail">
-                                        Nadirhat, kolkata, West Bengal
+                                        {{emp.address}}
                                     </div>
                                     </div>
                                 </li>
@@ -94,16 +94,25 @@
                                         City
                                     </div>
                                     <div class="item-detail">
-                                        Kolkata
+                                        {{emp.city}}
                                     </div>
                                     </div>
                                 </li>
                                 <li><div class="box">
                                     <div class="item">
-                                        Company Name
+                                        Experience
                                     </div>
                                     <div class="item-detail">
-                                        Cisco
+                                        {{emp.exp}}
+                                    </div>
+                                    </div>
+                                </li>
+                                <li><div class="box">
+                                    <div class="item">
+                                        Email
+                                    </div>
+                                    <div class="item-detail">
+                                        {{emp.email}}
                                     </div>
                                     </div>
                                 </li>

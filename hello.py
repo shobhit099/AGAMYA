@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for,session
 from flask_sqlalchemy import SQLAlchemy
+from flask_login import LoginManager, UserMixin, login_user, login_required , logout_user
 import os
 
 basedir = os.path.abspath(os.path.dirname(__file__))
@@ -7,8 +8,10 @@ app = Flask(__name__ , static_folder = 'static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'data.sqlite')
 app.secret_key = 'super secret key'
 db = SQLAlchemy(app)
+login_manager = LoginManager()
+login_manager.init_app(app)
 
-class emp(db.Model):
+class emp(UserMixin,db.Model):
     __tablename__ = 'emp'
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(50), nullable=False)
@@ -22,6 +25,10 @@ class emp(db.Model):
     password = db.Column(db.String(100), nullable=False)
     gender = db.Column(db.String(50), nullable = False)
     exp = db.Column(db.String(10), nullable = False)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return emp.query.get(int(user_id))
 
 @app.route('/')
 def index():
@@ -63,11 +70,15 @@ def login_emp():
         user = emp.query.filter_by(email = email).first()
         if user:
             if password == user.password:
-                return 'success'
+                login_user(user)
+                return redirect(url_for('profile_emp',p = user.id))
     return render_template('login_emp.html')
 
-@app.route('/profile_emp')
-def profile_emp():
-    return render_template('profile_emp.html')
+@app.route('/profile_emp/<p>')
+@login_required
+def profile_emp(p):
+    emp = load_user(p)
+    return render_template('profile_emp.html',emp = emp)
+    
 if __name__ == '__main__':
     app.run(debug=True)
