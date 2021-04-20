@@ -27,6 +27,19 @@ class emp(UserMixin,db.Model):
     gender = db.Column(db.String(50), nullable = False)
     exp = db.Column(db.String(10), nullable = False)
 
+class cmp(UserMixin,db.Model):
+    __tablename__ = 'cmp'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(50), nullable=False)
+    email = db.Column(db.String(255), nullable= False)
+    telephone = db.Column(db.Integer, nullable=False)
+    address = db.Column(db.String(250), nullable= False)
+    city = db.Column(db.String(50), nullable=False)
+    state = db.Column(db.String(250), nullable= False)
+    category = db.Column(db.String(250), nullable= False)
+    established = db.Column(db.Integer, nullable=False)
+    password = db.Column(db.String(100), nullable=False)
+
 @login_manager.user_loader
 def load_user(user_id):
     return emp.query.get(int(user_id))
@@ -64,13 +77,6 @@ def signup_emp():
         return redirect(url_for('login_emp'))
     return render_template('signup_emp.html')
 
-@app.route('/signup_cmp')
-def signup_cmp():
-    return render_template('signup_cmp.html')
-
-
-
-
 
 @app.route('/login_emp',methods=["POST","GET"])
 def login_emp():
@@ -84,10 +90,43 @@ def login_emp():
                 return redirect(url_for('profile_emp',p = user.id))
     return render_template('login_emp.html')
 
+@app.route('/sigup_cmp',methods=["POST","GET"])
+def signup_cmp():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+        telephone = request.form['telephone']
+        city = request.form['city']
+        address = request.form['address']
+        state = request.form['state']
+        category = request.form['category']
+        established = request.form['established']
+        password = request.form['password']
+        user = cmp(name = name, email = email, telephone = telephone, city = city, state = state, address = address, category = category, established = established, password = password)
+        db.session.add(user)
+        db.session.commit()
+        return redirect(url_for('login_cmp'))
+    return render_template('signup_cmp.html')
+
+    return render_template('signup_cmp.html')
+
+@app.route('/login_cmp',methods=["POST","GET"])
+def login_cmp():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        user = cmp.query.filter_by(email = email).first()
+        if user:
+            if password == user.password:
+                return 'success'
+    return render_template('login_cmp.html')
+
 @app.route('/profile_emp/<p>')
 @login_required
 def profile_emp(p):
     emp = load_user(p)
+    find = request.form['find']
+    q = cmp.query.filter_by()
     return render_template('profile_emp.html',emp = emp)
 
 @app.route("/logout")
