@@ -25,13 +25,16 @@ body{
 }
 
 h1{
-  margin:10px;
+
+  margin:20px;
+  text-align: center;
   font-size: auto;
-  font-family: system-ui;
+  font-family: 'Brush Script MT', cursive;
 }
 
 h2{
-  font-family: system-ui;
+  text-align: center;
+  font-family: "Lucida Console", "Courier New", monospace;
   font-size:2rem;
 }
 
