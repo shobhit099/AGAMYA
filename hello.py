@@ -19,6 +19,7 @@ class emp(UserMixin,db.Model):
     phone = db.Column(db.Integer, nullable=False)
     city = db.Column(db.String(50), nullable=False)
     address = db.Column(db.String(250), nullable= False)
+    state = db.Column(db.String(250), nullable= False)
     skill = db.Column(db.String(250), nullable= False)
     username = db.Column(db.String(100), unique= True)
     charge = db.Column(db.Integer, nullable=False)
@@ -50,13 +51,14 @@ def signup_emp():
         phone = request.form['phone']
         city = request.form['city']
         address = request.form['address']
+        state = request.form['state']
         skill = request.form['skill']
         username = request.form['username']
         charge = request.form['charge']
         password = request.form['password']
         gender = request.form['gender']
         exp = request.form['exp']
-        user = emp(name = name, email = email, phone = phone, city = city, address = address, skill = skill, username = username, charge = charge, password = password, gender = gender, exp = exp)
+        user = emp(name = name, email = email, phone = phone, city = city, state = state, address = address, skill = skill, username = username, charge = charge, password = password, gender = gender, exp = exp)
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login_emp'))
@@ -79,6 +81,12 @@ def login_emp():
 def profile_emp(p):
     emp = load_user(p)
     return render_template('profile_emp.html',emp = emp)
+
+@app.route("/logout")
+@login_required
+def logout():
+    logout_user()
+    return render_template('index.html')
     
 if __name__ == '__main__':
     app.run(debug=True)

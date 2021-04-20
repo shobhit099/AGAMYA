@@ -32,7 +32,7 @@
                     <a href="#">subscribers</a>
                 </li>
                 <li class="list-group-item">
-                    <a href="#" style="color: #e87580;">Logout</a>
+                    <a href="{{ url_for('logout')}}">Logout</a>
                 </li>
               </ul>
         </div>
@@ -95,6 +95,15 @@
                                     </div>
                                     <div class="item-detail">
                                         {{emp.city}}
+                                    </div>
+                                    </div>
+                                </li>
+                                <li><div class="box">
+                                    <div class="item">
+                                        State
+                                    </div>
+                                    <div class="item-detail">
+                                        {{emp.state}}
                                     </div>
                                     </div>
                                 </li>
