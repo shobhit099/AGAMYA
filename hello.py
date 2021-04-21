@@ -125,8 +125,8 @@ def login_cmp():
 @login_required
 def profile_emp(p):
     emp = load_user(p)
-    find = request.form['find']
-    q = cmp.query.filter_by()
+    # find = request.form['find']
+    # q = cmp.query.filter_by()
     return render_template('profile_emp.html',emp = emp)
 
 @app.route("/logout")
