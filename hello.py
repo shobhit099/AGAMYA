@@ -2,7 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for,session
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, UserMixin, login_user, login_required , logout_user
 import os
-
 basedir = os.path.abspath(os.path.dirname(__file__))
 app = Flask(__name__ , static_folder = 'static')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///' + os.path.join(basedir,'data.sqlite')
@@ -43,6 +42,10 @@ class cmp(UserMixin,db.Model):
 @login_manager.user_loader
 def load_user(user_id):
     return emp.query.get(int(user_id))
+
+@login_manager.user_loader
+def load_cmp(user_id):
+    return cmp.query.get(int(user_id))
 
 @app.route('/')
 def index():
@@ -118,7 +121,8 @@ def login_cmp():
         user = cmp.query.filter_by(email = email).first()
         if user:
             if password == user.password:
-                return 'success'
+                login_user(user)
+                return redirect(url_for('profile_cmp',p = user.id)) 
     return render_template('login_cmp.html')
 
 @app.route('/profile_emp/<p>')
@@ -128,6 +132,16 @@ def profile_emp(p):
     # find = request.form['find']
     # q = cmp.query.filter_by()
     return render_template('profile_emp.html',emp = emp)
+
+
+
+@app.route('/profile_cmp/<p>')
+@login_required
+def profile_cmp(p):
+    cmp = load_cmp(p)
+    # find = request.form['find']
+    # q = cmp.query.filter_by()
+    return render_template('profile_cmp.html',cmp = cmp)
 
 @app.route("/logout")
 @login_required
